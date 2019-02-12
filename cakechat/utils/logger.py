@@ -29,7 +29,12 @@ logging.config.dictConfig({
 
 
 def get_logger(name):
-    return logging.getLogger(name)
+    # create file handler which logs even debug messages
+    logger = logging.getLogger(name)
+    fh = logging.FileHandler('/root/cakechat/server.log')
+    fh.setLevel(logging.DEBUG)
+    logger.addHandler(fh)
+    return logger
 
 
 def get_tools_logger(name):
